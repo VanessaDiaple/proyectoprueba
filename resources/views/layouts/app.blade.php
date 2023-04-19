@@ -12,10 +12,11 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('vendor/fontawesome/css/all.min.css')}}">
+        <link rel="stylesheet" href="{{asset('/vendor/fontawesome/css/all.min.css')}}">
         @livewireStyles
     </head>
     <body class="font-sans antialiased">
@@ -42,5 +43,14 @@
         @stack('modals')
 
         @livewireScripts
+    <script>
+        Livewire.on('alert',function(message){
+            Swal.fire(
+                'Guardado!',
+                 message,
+                'success'
+            )
+        })
+    </script>
     </body>
 </html>

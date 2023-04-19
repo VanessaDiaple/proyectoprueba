@@ -18,7 +18,8 @@ class PostFactory extends Factory
     {
         return [
             'title'=>fake()->sentence(),
-            'content'=>fake()->text()
+            'content'=>fake()->text(),
+            'image'=>'posts/' . fake()->image('public/storage/posts', 640, 480, null, false)
         ];
     }
 }

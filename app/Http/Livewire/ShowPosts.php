@@ -5,13 +5,14 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Post;
 
+
 class ShowPosts extends Component
 {
     public $search;
     public $sort = 'id';
     public $direction = 'asc';
 
-    protected $listeners = ['render' => 'render'];
+    protected $listeners = ['render'];
     public function order($sort){
         if ($this->sort = $sort){
             if ($this->direction == 'desc'){

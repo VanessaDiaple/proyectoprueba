@@ -1,11 +1,10 @@
 <div>
-    <x-danger-button wire:click="$set('open',true)">
-        Crear nuevo post
-    </x-danger-button>
-
+    <a class="btn btn-green" wire:click="$set('open',true)">
+        <i class="fas fa-edit"></i>
+    </a>
     <x-dialog-modal wire:model="open">
         <x-slot name="title">
-            Crear nuevo post
+            Editar el post {{$post->title}}
         </x-slot>
 
         <x-slot name="content">
@@ -16,23 +15,20 @@
             </div>
             @if($image)
                 <img src="{{$image->temporaryUrl()}}">
-
+            @else
+                <img src="{{Storage::url($post->image)}}">
             @endif
+
             <div class="mb-4">
                 <x-label value="Titulo del Post"></x-label>
-                <x-input type="text" class="w-full" wire:model="title"></x-input>
-
-                <x-input-error for="title"></x-input-error>
-
+                <x-input type="text" class="w-full" wire:model="post.title"></x-input>
             </div>
 
-            <div class="mb-4">
+            <div>
                 <x-label value="Contenido del Post"></x-label>
-                <textarea class="w-full rounded" rows="6" wire:model="content"></textarea>
-
-                <x-input-error for="content"></x-input-error>
-
+                <textarea class="w-full rounded" rows="6" wire:model="post.content"></textarea>
             </div>
+
             <div>
                 <x-input type="file" wire:model="image" id="{{$identificador}}"></x-input>
                 <x-input-error for="image"></x-input-error>
@@ -40,9 +36,9 @@
         </x-slot>
 
         <x-slot name="footer">
-        <x-secondary-button wire:click="save" wire:loading.remove wire:target="save, image">Crear Post</x-secondary-button>
-        <x-danger-button wire:click="$set('open',false)">Cancelar</x-danger-button>
-            <span wire:loading wire:target="save">Guardando ...</span>
+            <x-secondary-button wire:click="save"  wire:loading.remove wire:target="save">Actualizar</x-secondary-button>
+            <x-danger-button wire:click="$set('open',false)">Cancelar</x-danger-button>
+            <span wire:loading wire:target="save">Actualizando ...</span>
         </x-slot>
     </x-dialog-modal>
 </div>

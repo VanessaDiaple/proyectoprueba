@@ -76,7 +76,7 @@
                                     </div>
                                 </td>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                   <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                    @livewire('edit-post', ['post'=> $post], key($post->id))
                                 </td>
                             </tr>
                             @endforeach
