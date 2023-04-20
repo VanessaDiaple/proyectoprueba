@@ -51,6 +51,26 @@
                 'success'
             )
         })
+        Livewire.on('delete',function(){
+            Swal.fire({
+                title: '¿Estas seguro?',
+                text: "Esta acción no se puede revertir!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, borralo!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        'Borrado!',
+                        'Tu post ha sido borrado con exito',
+                        'success'
+                    )
+                }
+            })
+        })
+
     </script>
     </body>
 </html>

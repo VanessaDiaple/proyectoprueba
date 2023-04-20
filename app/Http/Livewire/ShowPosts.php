@@ -28,10 +28,10 @@ class ShowPosts extends Component
         $this->postDeleted = $id;
     }
     protected $queryString = [
-      "numPost" => ['except'=>'10'],
-      "sort"  => ['except'=>'id'],
-      "direction"  => ['except'=>'asc'],
-      "search"  => ['except'=>'']
+        "numPost" => ['except'=>'10'],
+        "sort"  => ['except'=>'id'],
+        "direction"  => ['except'=>'asc'],
+        "search"  => ['except'=>'']
     ];
     public function order($sort){
         if ($this->sort = $sort){
@@ -61,11 +61,12 @@ class ShowPosts extends Component
         $post = Post::findOrFail($id);
         $post->delete();
         session()->flash('message', 'Post eliminado correctamente.');
+        $this->emit('delete','El post ha sido eliminado correctamente');
     }
     public function render()
     {
         $posts = Post::where('title', 'like','%'. $this->search . '%')
-        ->orwhere('content', 'like','%'. $this->search . '%')
+            ->orwhere('content', 'like','%'. $this->search . '%')
             ->orderBy($this->sort, $this->direction)
             ->paginate($this->numPost);
 

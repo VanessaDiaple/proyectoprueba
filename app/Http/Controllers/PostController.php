@@ -9,12 +9,11 @@ class PostController extends Controller
 {
 
     public function index(){
-        return view('post.index');
+        return view('posts.index');
     }
-
     public function edit($id)
     {
-        return view('post.edit', compact('id'));
+        return view('posts.edit', compact('id'));
     }
     public function destroy($id){
         $post = Post::findOrFail($id);
