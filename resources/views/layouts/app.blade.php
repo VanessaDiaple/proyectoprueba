@@ -62,10 +62,17 @@
                 confirmButtonText: 'Si, borralo!'
             }).then((result) => {
                 if (result.isConfirmed) {
+                    Livewire.emit('confirmDelete', postId);
                     Swal.fire(
                         'Borrado!',
                         'Tu post ha sido borrado con exito',
                         'success'
+                    )
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    Swal.fire(
+                        'Cancelado',
+                        'Tu post no ha sido borrado',
+                        'warning'
                     )
                 }
             })
