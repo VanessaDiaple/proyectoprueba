@@ -75,9 +75,18 @@
                                         {{$post->content}}
                                     </div>
                                 </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    @livewire('edit-post', ['post'=> $post], key($post->id))
+                                <td class="px-2 py-5 border-b border-gray-200 bg-white text-sm">
+                                   @livewire('edit-post', ['post'=> $post], key($post->id))
                                 </td>
+                                <td class="px-2 py-5 border-b border-gray-200 bg-white text-sm">
+
+                                    <a class="btn btn-red" wire:click="destroy({{ $post->id }})">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+
+                                </td>
+
+
                             </tr>
                             @endforeach
                             </tbody>
@@ -87,7 +96,13 @@
     No existe ningun registro
     </div>
     @endif
+
+        @if($posts->hasPages())
+        <div class="px-5 py-3">
+            {{$posts->links()}}
+        </div>
+        @endif
+
         </x-table>
     </div>
-
 </div>

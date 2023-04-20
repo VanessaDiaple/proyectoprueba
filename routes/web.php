@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\ShowPosts;
+use App\Http\Controllers\PostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +17,8 @@ use App\Http\Livewire\ShowPosts;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/posts', [PostController::class, 'index']);
 
 Route::middleware([
     'auth:sanctum',
