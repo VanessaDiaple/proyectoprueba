@@ -51,33 +51,30 @@
                 'success'
             )
         })
-        Livewire.on('delete',function(){
-            Swal.fire({
-                title: '¿Estas seguro?',
-                text: "Esta acción no se puede revertir!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Si, borralo!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Livewire.emit('confirmDelete', postId);
-                    Swal.fire(
-                        'Borrado!',
-                        'Tu post ha sido borrado con exito',
-                        'success'
-                    )
-                } else if (result.dismiss === Swal.DismissReason.cancel) {
-                    Swal.fire(
-                        'Cancelado',
-                        'Tu post no ha sido borrado',
-                        'warning'
-                    )
-                }
-            })
-        })
+        </script>
 
-    </script>
+        <script>
+            Livewire.on('deletePost', postId => {
+                Swal.fire({
+                    title: '¿Estas seguro?',
+                    text: "Esta acción no se puede revertir!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si, borralo!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Livewire.emitTo('show-posts', 'destroy', postId)
+                        Swal.fire(
+                            'Borrado!',
+                            'Tu post ha sido borrado con exito',
+                            'success'
+                        )
+                    }
+                })
+            })
+
+        </script>
     </body>
 </html>

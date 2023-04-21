@@ -18,15 +18,8 @@ class ShowPosts extends Component
     public $open = false;
     public $direction = 'asc';
     public $numPost = '10';
-    public $confirmDelete = false;
-    public $postDeleted = null;
-    protected $listeners = ['render'];
+    protected $listeners = ['render','destroy'];
 
-    public function confirmDelete($id)
-    {
-        $this->confirmDelete = true;
-        $this->postDeleted = $id;
-    }
     protected $queryString = [
         "numPost" => ['except'=>'10'],
         "sort"  => ['except'=>'id'],
@@ -61,7 +54,7 @@ class ShowPosts extends Component
         $post = Post::findOrFail($id);
         $post->delete();
         session()->flash('message', 'Post eliminado correctamente.');
-        $this->emit('delete','El post ha sido eliminado correctamente');
+
     }
     public function render()
     {

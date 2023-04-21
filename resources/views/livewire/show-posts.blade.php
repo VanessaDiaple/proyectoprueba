@@ -80,7 +80,7 @@
                             </td>
                             <td class="px-2 py-5 border-b border-gray-200 bg-white text-sm">
 
-                                <a class="btn btn-red" wire:click="destroy({{ $post->id }})">
+                                <a class="btn btn-red" wire:click="$emit('deletePost', {{$post->id}})">
                                     <i class="fas fa-trash-alt"></i>
                                 </a>
 
@@ -105,4 +105,5 @@
 
         </x-table>
     </div>
+
 </div>
