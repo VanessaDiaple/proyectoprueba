@@ -25,7 +25,7 @@ class CreatePost extends Component
     }
     public function save(){
         $this->validate();
-        $image = $this->image->store('posts');
+        $image = $this->image->store('public');
 
         Post::create([
         'title' => $this->title,

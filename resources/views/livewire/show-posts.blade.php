@@ -1,5 +1,4 @@
 <div>
-    {{$search}}
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <x-table>
             @if($posts->count())
@@ -75,10 +74,10 @@
                                     {{$post->content}}
                                 </div>
                             </td>
-                            <td class="px-2 py-5 border-b border-gray-200 bg-white text-sm">
+                            <td class="px-1 py-5 border-b border-gray-200 bg-white text-sm">
                                 @livewire('edit-post', ['post'=> $post], key($post->id))
                             </td>
-                            <td class="px-2 py-5 border-b border-gray-200 bg-white text-sm">
+                            <td class="px-1 py-5 border-b border-gray-200 bg-white text-sm">
 
                                 <a class="btn btn-red" wire:click="$emit('deletePost', {{$post->id}})">
                                     <i class="fas fa-trash-alt"></i>
